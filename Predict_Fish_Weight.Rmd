@@ -85,6 +85,10 @@ After Running the code, I found out this single regression element model (Height
 
 
 ## Pike
+```{r}
+Pike <- filter(fish, Species == "Pike")
+Pike <- select(Pike, -Species)
+```
 
 ### Best Models
 
