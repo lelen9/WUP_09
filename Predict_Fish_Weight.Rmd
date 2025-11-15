@@ -92,6 +92,11 @@ Pike <- select(Pike, -Species)
 
 ### Best Models
 
+```{r}
+Pikemodel1 <- lm(Weight~ .,data=Pike)
+summary.lm(pikemodel1)
+```
+
 ### Best Two regressor model
 
 ## Roach
