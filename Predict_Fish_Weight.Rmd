@@ -65,6 +65,24 @@ summary.lm(Perchmodel1)
 
 ### Best Two regressor model
 
+```{r}
+library(leaps)
+Perchmodel1automate<-
+    regsubsets(Weight ~ .,
+               data = Perch,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.Perch <- summary(Perchmodel1automate)
+as.data.frame(Perch$outmat)
+library(car)
+subsets(Perchmodel1automate,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+After Running the code, I found out this single regression element model (Height) is the best one, and the best two element models are (Height and Width), and i was able to get the bes 3 regression model elements including models 4 and 5 too. Statistically, I was able to judge the models by adjusting R squared values.
+
 
 ## Pike
 
