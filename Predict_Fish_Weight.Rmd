@@ -94,11 +94,25 @@ Pike <- select(Pike, -Species)
 
 ```{r}
 Pikemodel1 <- lm(Weight~ .,data=Pike)
-summary.lm(pikemodel1)
+summary.lm(Pikemodel1)
 ```
 
 ### Best Two regressor model
+```{r}
+library(leaps)
+Pikemodel1automate <-
+    regsubsets(Weight ~ .,
+               data = Pike,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
 
+summary.out <- summary(Pikemodel1automate)
+as.data.frame(Pike$outmat)
+library(car)
+subsets(Pikemodel1automate,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
 ## Roach
 
 ### Best Models
