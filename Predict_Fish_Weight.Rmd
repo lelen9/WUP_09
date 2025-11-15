@@ -126,6 +126,11 @@ Roach <- select(Roach, -Species)
 
 ### Best Models
 
+```{r}
+Roach <- lm(Weight~ .,data=Roach)
+summary.lm(Roachmodel1)
+```
+
 ### Best Two regressor model
 
 ## Final Summary Statements
