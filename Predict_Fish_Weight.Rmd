@@ -58,6 +58,11 @@ Perch <- select(Perch, -Species)
 
 ### Best Models
 
+```{r}
+Perchmodel1 <- lm(Weight~ .,data=Perch)
+summary.lm(Perchmodel1)
+```
+
 ### Best Two regressor model
 
 
