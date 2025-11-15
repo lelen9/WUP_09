@@ -113,7 +113,16 @@ as.data.frame(Pike$outmat)
 library(car)
 subsets(Pikemodel1automate,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
+
+After running the code for pike, I was able to get the best 2 regression model elements which were length 1 and length 3. However models length 1, 2 and 3 along with Height and Width were the best too. All of the models were good when i used the adjusted R value.
+
 ## Roach
+
+```{r}
+Roach <- filter(fish, Species == "Roach")
+Roach <- select(Roach, -Species) 
+```
+
 
 ### Best Models
 
