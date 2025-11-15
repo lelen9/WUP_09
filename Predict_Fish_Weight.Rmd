@@ -127,10 +127,29 @@ Roach <- select(Roach, -Species)
 ### Best Models
 
 ```{r}
-Roach <- lm(Weight~ .,data=Roach)
+Roachmodel1 <- lm(Weight~ .,data=Roach)
 summary.lm(Roachmodel1)
 ```
 
 ### Best Two regressor model
+```{r}
+library(leaps)
+Roachmodel1automate<-
+    regsubsets(Weight ~ .,
+               data = Roach,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.Roach <- summary(Roachmodel1automate)
+as.data.frame(Roach$outmat)
+library(car)
+subsets(Roachmodel1automate,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+After running the code i was able to get all 5 Regression model events. The best two were Lenght 3 and Width. I judged by using the adjusted R values.
 
 ## Final Summary Statements
+
+In this assignment i was able to compare the different regressor models of different fishes. for every fish model i estimated the weight factor by using the adjusted r value to get the best 2 model. 
